@@ -1,0 +1,19 @@
+{
+  "Admin": {
+    "List": "",
+    "CRUD": {
+      "Create": {
+        "Name": "",
+        "Description": "",
+        "Price": "",
+        "Image": "",
+        "Save":"",
+        "Reset":""
+      },
+      "Read":"",
+      "Update":"",
+      "Delete":""
+    },
+    "Analyse":""
+  }
+}
