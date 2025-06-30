@@ -149,7 +149,6 @@ const FormFields = ({
         // Name validation
         if (!formData.name.trim()) {
             newErrors.name = 'Product name is required';
-            console.log(newErrors.name);
             isNotValid = true;
         }
 
@@ -174,7 +173,7 @@ const FormFields = ({
             } else if (price > 1000000) { // Set a reasonable maximum price
                 newErrors.price = 'Price must be less than 1,000,000';
                 isNotValid = true;
-            } else if (price.toString().includes('e')) {
+            } else if (price.toString().includes("e")) {
                 newErrors.price = 'Price cannot be in scientific notation';
                 isNotValid = true;
             }
@@ -302,19 +301,19 @@ function CreateForm() {
 
     const [successMessage, setSuccessMessage] = useState('');
     const [generalError, setGeneralError] = useState('');
-    const [showDuplicateConfirm, setShowDuplicateConfirm] = useState(false);
+   // const [showDuplicateConfirm, setShowDuplicateConfirm] = useState(false);
    /* const [pendingProduct, setPendingProduct] = useState(null);*/
 
-   const handlePush = async (newProduct) => {
 
-   const res = await fetch("http://localhost:8080/products", {
+const handlePush = async (newProduct) => {
+
+   const res = await fetch("http://localhost:8080", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify(newProduct),
 });
-
 const result = await res.json();
 
 if (!res.ok) {
@@ -322,8 +321,11 @@ if (!res.ok) {
     if (result.error && result.error.includes('already exists')) {
       /*  setPendingProduct(newProduct);
         setShowDuplicateConfirm(true);*/
-        return;
-    }
+        setErrors({name: 'Error creating product: ' + result.error})
+
+    }   
+
+    return false
 
     // Handle other specific error messages from backend
 /*     if (result.error) {
@@ -337,7 +339,10 @@ if (!res.ok) {
     }
     throw new Error(result.error || 'Failed to create product');*/
 }
-   }
+
+return true
+}
+
 
        // Validate forms (in criteria general)
        const validateGeneralCriteria = (setGeneralMessage, message) => {
@@ -382,38 +387,38 @@ if (!res.ok) {
         try {
             
             if(!validateGeneralCriteria(setGeneralError,'Please fill in all required fields'))
-            {
-                                  console.log("oke nha ngoai if)");
-               // if(!validateFormFields()){
-                handlePush(newProduct);
-                    console.log("oke nha brotrong if)");
-                // Clear form on success
-                setFormData({
-                    name: '',
-                    desc: '',
-                    price: '',
-                    image: ''
-                });
+            { 
+                if(!validateFormFields())
+                    {
+                    if (await handlePush(newProduct))                          
+                    {
+                        // Clear form on success
+                        setFormData({
+                            name: '',
+                            desc: '',
+                            price: '',
+                            image: ''
+                        });
+                        setErrors({
+                            name: '',
+                            desc: '',
+                            price: '',
+                            image: ''
+                        });
 
-            // Set success message
-            setSuccessMessage('Product has been successfully added to the database!');
-
-            // Clear success message after 5 seconds
-            setTimeout(() => {
-                setSuccessMessage('');
-            }, 5000);
-
-               // }
-
+                        // Set success message
+                        setSuccessMessage('Product has been successfully added to the database!');
+                        
+                        // Clear success message after 5 seconds
+                        setTimeout(() => {
+                            setSuccessMessage('');
+                        }, 5000);
+                    }
+                }
             }
             
 
-            setErrors({
-                name: '',
-                desc: '',
-                price: '',
-                image: ''
-            });
+
 
 
         } catch (error) {
@@ -465,8 +470,8 @@ if (!res.ok) {
                 <GeneralMessages
                     successMessage={successMessage}
                     generalError={generalError}
-                    showDuplicateConfirm={showDuplicateConfirm}
-                    setShowDuplicateConfirm={setShowDuplicateConfirm}
+                    //showDuplicateConfirm={showDuplicateConfirm}
+                    //setShowDuplicateConfirm={setShowDuplicateConfirm}
                  /*   setPendingProduct={setPendingProduct}*/
                     setFormData={setFormData}
                     setErrors={setErrors}
