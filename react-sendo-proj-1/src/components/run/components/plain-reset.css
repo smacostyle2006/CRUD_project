@@ -1,0 +1,55 @@
+/* plain-reset.css */
+
+/* Input: giống input mặc định */
+input {
+  @apply border border-gray-300 px-3 py-2 rounded text-base bg-white text-gray-900 box-border;
+  border: 1px solid #ccc;
+  padding: 1px 2px;
+  font-size: 1em;
+}
+
+/* Button: giống button mặc định */
+button {
+  @apply border border-gray-300 px-3 py-2 rounded bg-gray-100 text-gray-900 text-base cursor-pointer transition;
+    /* Tailwind cho padding, font, border-radius */
+  @apply px-2 py-1 text-base rounded;
+  /* CSS thuần cho border-style và màu mặc định */
+  border: 2px outset buttonface;
+  background: buttonface;
+  color: black;
+}
+button:hover {
+  @apply bg-gray-200;
+}
+
+h1 {
+  @apply text-[2em] font-bold my-[0.67em];
+}
+
+/* ul/li: giống mặc định */
+ul {
+  @apply list-disc pl-5 my-4;
+}
+li {
+  @apply mb-2;
+}
+
+/* Label: giống mặc định */
+label {
+  @apply inline-block mb-2 font-medium text-gray-900;
+}
+
+/* Link <a>: giống mặc định */
+a {
+  @apply text-blue-600 underline cursor-pointer;
+  color: #0000ee;
+  text-decoration: underline;
+}
+a:visited {
+  @apply text-purple-600;
+  color: #551a8b;
+}
+a:hover {
+  @apply text-blue-800;
+  color: #ee0000;
+}

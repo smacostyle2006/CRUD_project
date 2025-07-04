@@ -1,7 +1,56 @@
 {
+  "name": "study_react",
+  "version": "0.1.0",
+  "private": true,
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.sendo.vn/hungdnt/react-sendo-proj.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.11",
-    "react-router-dom": "^6.0.0-beta.0",
-    "tailwindcss": "^4.1.11"
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.2",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.2.0",
+    "tailwindcss": "^3.4.17",
+    "typescript-eslint": "^8.34.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
