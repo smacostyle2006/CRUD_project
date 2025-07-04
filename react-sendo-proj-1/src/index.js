@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './components/run/components/index.css';
-import Navigation from './components/main/App';
+import Navigation from '../../pages/products/App';
 import reportWebVitals from './components/run/components/reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

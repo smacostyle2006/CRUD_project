@@ -1,10 +1,16 @@
-import { Routes, Route, Link } from "react-router-dom";
-import CRUD from '../AdminNav/CRUD.js';
-import List from "../../sites/modules/List.js";
+// App.js
+import React, { useState } from 'react';
+import './components/styles/App.css';
+/* import AdminNav from './components/modules/Admin/modules/AdminNav.js';
+import CrudNav from './components/modules/Admin/modules/CrudNav.js';
+import CreateForm from './components/bar-form/CreateForm.js';*/
+import CRUD from './crud/CRUD';
+import List from './list/List';
 
-function AdminNav() {
-    return (
-      <>
+function Navigation() {
+  return (
+    
+    <div className="App">
           {/* Navigation - like your HTML nav but with Links */}
         <nav className='Head'>
           <Link to="/list">List</Link>
@@ -19,8 +25,8 @@ function AdminNav() {
           <Route path="update" element={<Contact />} />
           <Route path="delete" element={<Contact />} /> */}
         </Routes>
-      </>
-    );
-  }
-  
-  export default AdminNav;
+    </div>
+  );
+}
+
+export default Navigation;
