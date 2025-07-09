@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "./CreateForm.css";
+import { FormFields } from "../../../front/components/form-edit";
+
+const API_URL = window.location.hostname.includes("csb.app")
+  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
+  : "http://localhost:8080"; // Local/Codespace
 
 // Component for general messages (success and error)
 const GeneralMessages = ({
@@ -98,7 +103,7 @@ const GeneralMessages = ({
 };
 
 // Component for form fields with error handling
-const FormFields = ({
+/*const FormFields = ({
   formData,
   errors,
   setErrors,
@@ -106,7 +111,7 @@ const FormFields = ({
   setFormData,
   setSuccessMessage,
   setShowDuplicateConfirm,
-  /* setPendingProduct,*/
+  // setPendingProduct,
   validateGeneralCriteria,
   handleSubmit,
 }) => {
@@ -217,7 +222,7 @@ const FormFields = ({
       onSubmit={(e) => handleSubmit(e, validateFormFields)}
       /*{(e) => {
             e.preventDefault();
-        }}*/
+        //}}
       onReset={handleReset}
     >
       <div className="form-group">
@@ -270,7 +275,7 @@ const FormFields = ({
       </div>
     </form>
   );
-};
+}; */
 
 // Main CreateForm component
 function CreateForm() {
@@ -294,7 +299,7 @@ function CreateForm() {
   /* const [pendingProduct, setPendingProduct] = useState(null);*/
 
   const handlePush = async (newProduct) => {
-    const res = await fetch("https://ld84wr-8080.csb.app/", {
+    const res = await fetch(`${API_URL}/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

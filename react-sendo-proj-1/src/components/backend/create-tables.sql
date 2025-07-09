@@ -9,5 +9,5 @@ CREATE TABLE Product (
 );
 
 /* \c allproducts*/
-/* \i react-sendo-proj-1/src/components/backend/create-tables.sql */
+/* \i src/components/backend/create-tables.sql */
 /* SELECT * FROM PRODUCT; */

@@ -7,7 +7,7 @@ import CrudNav from "../../Admin/modules/CrudNav.js"; */
 import { RouteButton } from "../../../routing/components/button-route";
 import { TrigButton } from "../../../interact/components/trigger-button";
 
-export const AutoFetchOnPage = ({ doLink, handle }) => {
+export const AutoFetchOnPage = ({ doLink /*, handle*/ }) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
@@ -58,11 +58,11 @@ export const AutoFetchOnPage = ({ doLink, handle }) => {
             )
           }
           {doLink === true ? (
-            <RouteButton setBlur={setBlur}></RouteButton>
+            <RouteButton setBlur={setBlur} product={product}></RouteButton>
           ) : (
             <TrigButton
               setBlur={setBlur}
-              handle={() => handle(product)}
+              /*handle={() => handle(product)}*/
             ></TrigButton>
           )}
           {/* Nút Action nhỏ, căn giữa 
