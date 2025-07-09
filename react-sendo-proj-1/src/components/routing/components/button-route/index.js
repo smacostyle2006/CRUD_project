@@ -8,17 +8,14 @@ import CrudNav from "../../Admin/modules/CrudNav.js"; */
 import { TrigButton } from "../../../interact/components/trigger-button";
 import ProductId from "../../../../pages/products/crud/update/[update-id]";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const RouteButton = ({ setBlur, product }) => {
+export const RouteButton = ({ setBlur, handle }) => {
+  const navigate = useNavigate();
   return (
     <>
       {/* Nút Action nhỏ, căn giữa */}
-      <Link
-        to={`/crud/product-update/${product.id}`}
-        state={{ productState: product }}
-      >
-        <TrigButton setBlur={setBlur}></TrigButton>
-      </Link>
+      <TrigButton setBlur={setBlur} handle={handle}></TrigButton>
     </>
   );
 };

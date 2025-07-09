@@ -28,9 +28,9 @@ function CRUD() {
       </nav>
       {/* Routes - like your HTML files but as components */}
       <Routes>
-        <Route path="/create/*" element={<Create />} />
-        <Route path="/update/*" element={<Update />} />
-        <Route path="/product-update/:productId/*" element={<ProductId />} />
+        <Route path="create/*" element={<Create />} />
+        <Route path="update/*" element={<Update />} />
+        <Route path="product-update/:productId/*" element={<ProductId />} />
         {/*<Route path="update" element={<Contact />} />
     <Route path="delete" element={<Contact />} /> */}
       </Routes>

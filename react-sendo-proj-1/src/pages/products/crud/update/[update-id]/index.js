@@ -8,22 +8,19 @@ import AdminNav from '../../Admin/modules/AdminNav.js';
 import CrudNav from '../../Admin/modules/CrudNav.js'; 
 import CreateForm from "../../../components/main/components/bar-form/CreateForm"; */
 import { FormFields } from "../../../../../components/front/components/form-edit";
+import { put } from "../../../../../components/data-flow/components/import-data/fetching";
 
 const API_URL = window.location.hostname.includes("csb.app")
-  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
+  ? "https://c85ypt-8080.csb.app" // URL backend Codesandbox
   : "http://localhost:8080"; // Local/Codespace
 
 function ProductId() {
   const { productId } = useParams();
   const location = useLocation();
-  let product;
-  console.log(product);
-  console.log("location.state:", location.state);
-  product = location.state?.productState;
-  console.log(product);
-  console.log("location.state:", location.state);
+  const product = location.state?.productState;
 
   const [formData, setFormData] = useState({
+    id: "",
     name: "",
     desc: "",
     price: "",
@@ -31,11 +28,9 @@ function ProductId() {
   });
 
   useEffect(() => {
-    console.log("oke nogai if");
-    console.log("location.state:", location.state);
     if (product) {
-      console.log("oke");
       setFormData({
+        id: product.id || "",
         name: product.name || "",
         desc: product.desc || "",
         price: product.price || "",
@@ -183,13 +178,10 @@ function ProductId() {
   };
 
   const handlePush = async (newProduct) => {
-    const res = await fetch(`${API_URL}/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    });
+    const res = await put(
+      `http://localhost:8080/products/${productId}`,
+      formData
+    );
     const result = await res.json();
 
     if (!res.ok) {
@@ -324,7 +316,7 @@ function ProductId() {
         </button>
       </div>
       <AutoFetchOnPage></AutoFetchOnPage>
-    </>*/
+    </> */
 }
 
 export default ProductId;

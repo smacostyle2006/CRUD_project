@@ -20,6 +20,7 @@ const (
 )
 
 type Product struct {
+	ID          int     `json:"id"`
 	Name        string  `json:"name"`
 	Description string  `json:"desc"`
 	Price       float64 `json:"price"`
@@ -51,7 +52,7 @@ func main() {
 
 	r.Use(cors.Default()) // ✅ Cho phép frontend truy cập từ origin khác
 
-	r.POST("/", func(c *gin.Context) {
+	r.POST("/products", func(c *gin.Context) {
 		if err := c.ShouldBindJSON(&newProduct); err != nil {
 			c.JSON(400, gin.H{"error": "Invalid request data: " + err.Error()})
 			return
@@ -133,7 +134,7 @@ func main() {
 			return
 		}
 
-		if queryProduct.Name != newProduct.Name {
+		if qzueryProduct.Name != newProduct.Name {
 
 		} else {
 			c.JSON(400, gin.H{"error": "A product with this name already exists"})
@@ -144,6 +145,10 @@ func main() {
 
 	// Route GET /products
 	r.GET("/products", func(c *gin.Context) {
+		utils.HandleGetProducts(c, db)
+	})
+
+	r.PUT("/products/:productId", func(c *gin.Context) {
 		utils.HandleGetProducts(c, db)
 	})
 

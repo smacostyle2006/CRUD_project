@@ -10,7 +10,7 @@ function List() {
     console.log("Sản phẩm tương tự:", logTheThing);
   };
   return (
-    <AutoFetchOnPage doLink={false} /*handle={doSomething}*/></AutoFetchOnPage>
+    <AutoFetchOnPage /* doNav={false} */ handle={doSomething}></AutoFetchOnPage>
   );
 }
 

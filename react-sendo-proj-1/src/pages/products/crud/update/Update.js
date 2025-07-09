@@ -5,7 +5,15 @@ import AdminNav from '../../Admin/modules/AdminNav.js';
 import CrudNav from '../../Admin/modules/CrudNav.js'; 
 import CreateForm from "../../../components/main/components/bar-form/CreateForm"; */
 import { AutoFetchOnPage } from "../../../../components/data-flow/components/import-data";
+import { useNavigate } from "react-router-dom";
+
 function Update() {
+  const navigate = useNavigate();
+  const navigateProduct = (product) => {
+    navigate(`/crud/product-update/${product.id}`, {
+      state: { productState: product },
+    });
+  };
   return (
     <>
       <div className="flex items-center gap-4">
@@ -33,7 +41,9 @@ function Update() {
           Tìm
         </button>
       </div>
-      <AutoFetchOnPage doLink={true}></AutoFetchOnPage>
+      <AutoFetchOnPage
+        /* doNav={true} */ handle={navigateProduct}
+      ></AutoFetchOnPage>
     </>
   );
 }

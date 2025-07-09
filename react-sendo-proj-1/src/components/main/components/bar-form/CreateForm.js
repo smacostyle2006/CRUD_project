@@ -3,7 +3,7 @@ import "./CreateForm.css";
 import { FormFields } from "../../../front/components/form-edit";
 
 const API_URL = window.location.hostname.includes("csb.app")
-  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
+  ? "https://c85ypt-8080.csb.app" // URL backend Codesandbox
   : "http://localhost:8080"; // Local/Codespace
 
 // Component for general messages (success and error)
@@ -299,7 +299,7 @@ function CreateForm() {
   /* const [pendingProduct, setPendingProduct] = useState(null);*/
 
   const handlePush = async (newProduct) => {
-    const res = await fetch(`${API_URL}/`, {
+    const res = await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
