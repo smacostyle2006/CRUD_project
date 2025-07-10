@@ -18,8 +18,6 @@ type Product struct {
 func HandleUpdateProducts(c *gin.Context, db *sql.DB, productId int) {
 	var newProduct Product
 	if err := c.ShouldBindJSON(&newProduct);  err != nil {
-		fmt.Println("co phai do cai nay ko?")
-		fmt.Println(err)
 		c.JSON(400, gin.H{"error": "Invalid request data: " + err.Error()})
 		return
 	}
