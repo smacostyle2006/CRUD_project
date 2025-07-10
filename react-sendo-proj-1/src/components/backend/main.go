@@ -2,9 +2,12 @@ package main
 
 import (
 	"database/sql"
+	"strconv"
 	"fmt"
 
-	"github.com/yourusername/product-backend/sites/modules/utils"
+	"github.com/yourusername/product-backend/sites/modules/webpage"
+	"github.com/yourusername/product-backend/components/fetching/utils"
+
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -145,11 +148,19 @@ func main() {
 
 	// Route GET /products
 	r.GET("/products", func(c *gin.Context) {
-		utils.HandleGetProducts(c, db)
+		webpage.HandleGetProducts(c, db)
 	})
 
 	r.PUT("/products/:productId", func(c *gin.Context) {
-		utils.HandleGetProducts(c, db)
+		idStr := c.Param("productId") // Lấy từ URL
+		id, err := strconv.Atoi(idStr) // Convert string thành int
+		if err != nil {
+			c.JSON(400, gin.H{"error": "Invalid ID"})
+			return
+		}
+		utils.HandleUpdateProducts(c, db, id)
+
+
 	})
 
 	r.Run(":8080") // chạy server tại http://localhost:8080

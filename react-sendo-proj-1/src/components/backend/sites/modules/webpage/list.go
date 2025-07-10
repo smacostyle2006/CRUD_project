@@ -1,4 +1,4 @@
-package utils
+package webpage
 
 import (
 	"database/sql"
@@ -15,13 +15,9 @@ type Product struct {
 	ImageURL    string  `json:"image"`
 }
 
-func handleUpdateProducts(c *gin.Context, db *sql.DB) {
-	if err := c.ShouldBindJSON(&newProduct); err != nil {
-		c.JSON(400, gin.H{"error": "Invalid request data: " + err.Error()})
-		return
-	}
+func HandleGetProducts(c *gin.Context, db *sql.DB) {
 	// Query to get all products
-	rows, err := db.Query("SELECT id, name, descrip, price, image FROM product")
+	rows, err := db.Query("SELECT id, name, descrip, price, image FROM product order by id")
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Failed to fetch products: " + err.Error()})
 		return

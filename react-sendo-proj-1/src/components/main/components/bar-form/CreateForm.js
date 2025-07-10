@@ -3,7 +3,7 @@ import "./CreateForm.css";
 import { FormFields } from "../../../front/components/form-edit";
 
 const API_URL = window.location.hostname.includes("csb.app")
-  ? "https://c85ypt-8080.csb.app" // URL backend Codesandbox
+  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
   : "http://localhost:8080"; // Local/Codespace
 
 // Component for general messages (success and error)
@@ -307,7 +307,6 @@ function CreateForm() {
       body: JSON.stringify(newProduct),
     });
     const result = await res.json();
-
     if (!res.ok) {
       // Handle duplicate name error
       if (result.error && result.error.includes("already exists")) {

@@ -11,7 +11,7 @@ import { FormFields } from "../../../../../components/front/components/form-edit
 import { put } from "../../../../../components/data-flow/components/import-data/fetching";
 
 const API_URL = window.location.hostname.includes("csb.app")
-  ? "https://c85ypt-8080.csb.app" // URL backend Codesandbox
+  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
   : "http://localhost:8080"; // Local/Codespace
 
 function ProductId() {
@@ -178,20 +178,15 @@ function ProductId() {
   };
 
   const handlePush = async (newProduct) => {
-    const res = await put(
-      `http://localhost:8080/products/${productId}`,
-      formData
-    );
-    const result = await res.json();
-
-    if (!res.ok) {
+    const res = await put(`${API_URL}/products/${productId}`, newProduct);
+    const result = await res;
+    if (false) {
       // Handle duplicate name error
       if (result.error && result.error.includes("already exists")) {
         /*  setPendingProduct(newProduct);
         setShowDuplicateConfirm(true);*/
         setErrors({ name: "Error creating product: " + result.error });
       }
-
       return false;
 
       // Handle other specific error messages from backend
@@ -206,7 +201,6 @@ function ProductId() {
     }
     throw new Error(result.error || 'Failed to create product');*/
     }
-
     return true;
   };
 
@@ -231,12 +225,7 @@ function ProductId() {
         if (!validateFormFields()) {
           if (await handlePush(newProduct)) {
             // Clear form on success
-            setFormData({
-              name: "",
-              desc: "",
-              price: "",
-              image: "",
-            });
+            setFormData(newProduct);
             setErrors({
               name: "",
               desc: "",
@@ -245,9 +234,7 @@ function ProductId() {
             });
 
             // Set success message
-            setSuccessMessage(
-              "Product has been successfully added to the database!"
-            );
+            setSuccessMessage("Product has been successfully updated!");
 
             // Clear success message after 5 seconds
             setTimeout(() => {
