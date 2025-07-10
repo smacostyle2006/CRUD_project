@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"database/sql"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
