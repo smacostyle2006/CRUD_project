@@ -158,7 +158,19 @@ func main() {
 			c.JSON(400, gin.H{"error": "Invalid ID"})
 			return
 		}
-		utils.HandleUpdateProducts(c, db, id)
+		utils.HandleUpdateProductID(c, db, id)
+
+
+	})
+
+	r.DELETE("/products/:productId", func(c *gin.Context) {
+		idStr := c.Param("productId") // Lấy từ URL
+		id, err := strconv.Atoi(idStr) // Convert string thành int
+		if err != nil {
+			c.JSON(400, gin.H{"error": "Invalid ID"})
+			return
+		}
+		utils.HandleDeleteProductID(c, db, id)
 
 
 	})

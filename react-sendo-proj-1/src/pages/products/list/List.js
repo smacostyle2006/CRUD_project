@@ -5,12 +5,10 @@ import React, { useEffect, useState } from "react";
 import CrudNav from "../../Admin/modules/CrudNav.js"; */
 /* import CreateForm from '../../../components/bar-form/CreateForm.js'; */
 import { AutoFetchOnPage } from "../../../components/data-flow/components/import-data";
+import { TrigButton } from "../../../components/interact/components/trigger-button";
 function List() {
-  const doSomething = (logTheThing) => {
-    console.log("Sản phẩm tương tự:", logTheThing);
-  };
   return (
-    <AutoFetchOnPage /* doNav={false} */ handle={doSomething}></AutoFetchOnPage>
+    <AutoFetchOnPage /* doNav={false} */ Button={TrigButton}></AutoFetchOnPage>
   );
 }
 

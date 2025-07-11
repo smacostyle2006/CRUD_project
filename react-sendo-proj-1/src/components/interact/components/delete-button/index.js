@@ -5,10 +5,7 @@ import React, { useEffect, useState } from "react";
 import CrudNav from "../../Admin/modules/CrudNav.js"; */
 /* import CreateForm from '../../../components/bar-form/CreateForm.js'; */
 
-export const TrigButton = ({ setBlur, handle, product }) => {
-  const doSomething = () => {
-    console.log("Sản phẩm tương tự:", product);
-  };
+export const TrigButton = ({ setBlur, handle }) => {
   return (
     <>
       {/* Nút Action nhỏ, căn giữa */}
@@ -26,9 +23,7 @@ export const TrigButton = ({ setBlur, handle, product }) => {
         onMouseLeave={() => setBlur(false)}
         onClick={(e) => {
           e.stopPropagation();
-          {
-            handle ? handle() : doSomething();
-          }
+          handle();
         }}
       >
         Action

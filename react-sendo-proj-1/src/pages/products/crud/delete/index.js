@@ -4,12 +4,17 @@ import React, { useState } from "react";
 import AdminNav from '../../Admin/modules/AdminNav.js';
 import CrudNav from '../../Admin/modules/CrudNav.js'; 
 import CreateForm from "../../../components/main/components/bar-form/CreateForm"; */
-
 import { useNavigate } from "react-router-dom";
 import { AutoFetchOnPage } from "../../../../components/data-flow/components/import-data";
-import { RouteButton } from "../../../../components/routing/components/button-route";
+import { DeleteButton } from "../../../../components/routing/components/delete-button";
 
-function Update() {
+function Delete() {
+  const navigate = useNavigate();
+  const deleteProducts = (product) => {
+    navigate(`/crud/product-update/${product.id}`, {
+      state: { productState: product },
+    });
+  };
   return (
     <>
       <div className="flex items-center gap-4">
@@ -38,10 +43,11 @@ function Update() {
         </button>
       </div>
       <AutoFetchOnPage
-        /* doNav={true} */ Button={RouteButton}
+        /* doNav={true} */
+        Button={DeleteButton}
       ></AutoFetchOnPage>
     </>
   );
 }
 
-export default Update;
+export default Delete;

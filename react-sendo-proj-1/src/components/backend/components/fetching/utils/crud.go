@@ -14,7 +14,7 @@ type Product struct {
 	ImageURL    string  `json:"image"`
 }
 
-func HandleUpdateProducts(c *gin.Context, db *sql.DB, productId int) {
+func HandleUpdateProductID(c *gin.Context, db *sql.DB, productId int) {
 	var newProduct Product
 	if err := c.ShouldBindJSON(&newProduct);  err != nil {
 		c.JSON(400, gin.H{"error": "Invalid request data: " + err.Error()})
@@ -29,5 +29,18 @@ func HandleUpdateProducts(c *gin.Context, db *sql.DB, productId int) {
 		c.JSON(500, gin.H{"error": "Failed to update products: " + err.Error()})
 		return
 	}
-	c.JSON(200, gin.H{"error": results})
+	c.JSON(203, gin.H{"message": results})
+}
+
+func HandleDeleteProductID(c *gin.Context, db *sql.DB, productId int) {
+
+
+	deleteStmt := `delete from product where id = $1`
+	// Query to get all products
+	results, err := db.Exec(deleteStmt, productId)
+	if err != nil {
+		c.JSON(500, gin.H{"error": "Failed to delete products: " + err.Error()})
+		return
+	}
+	c.JSON(204, gin.H{"message": results})
 }

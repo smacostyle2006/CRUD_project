@@ -7,6 +7,14 @@ export function put(url, data) {
   }).then((res) => res.json());
 }
 
+export function del(url, data) {
+  return fetch(url, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}
+
 function get(url) {
   return fetch(url).then((res) => res.json());
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateForm.css";
 import { FormFields } from "../../../front/components/form-edit";
 
-const API_URL = window.location.hostname.includes("csb.app")
+export const API_URL = window.location.hostname.includes("csb.app")
   ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
   : "http://localhost:8080"; // Local/Codespace
 

@@ -6,6 +6,7 @@ import CrudNav from '../modules/CrudNav.js'; */
 import Create from "./Create";
 import Update from "./update/Update";
 import ProductId from "./update/[update-id]";
+import Delete from "./delete";
 
 function CRUD() {
   let productId;
@@ -31,8 +32,8 @@ function CRUD() {
         <Route path="create/*" element={<Create />} />
         <Route path="update/*" element={<Update />} />
         <Route path="product-update/:productId/*" element={<ProductId />} />
-        {/*<Route path="update" element={<Contact />} />
-    <Route path="delete" element={<Contact />} /> */}
+        {/*<Route path="update" element={<Contact />} /> */}
+        <Route path="delete" element={<Delete />} />
       </Routes>
     </div>
   );

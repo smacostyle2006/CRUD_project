@@ -10,12 +10,17 @@ import ProductId from "../../../../pages/products/crud/update/[update-id]";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export const RouteButton = ({ setBlur, handle }) => {
+export const RouteButton = ({ setBlur, product }) => {
   const navigate = useNavigate();
+  const navigateProduct = () => {
+    navigate(`/crud/product-update/${product.id}`, {
+      state: { productState: product },
+    });
+  };
   return (
     <>
       {/* Nút Action nhỏ, căn giữa */}
-      <TrigButton setBlur={setBlur} handle={handle}></TrigButton>
+      <TrigButton setBlur={setBlur} handle={navigateProduct}></TrigButton>
     </>
   );
 };
