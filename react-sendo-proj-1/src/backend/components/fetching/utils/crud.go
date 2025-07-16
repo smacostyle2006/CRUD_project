@@ -42,5 +42,5 @@ func HandleDeleteProductID(c *gin.Context, db *sql.DB, productId int) {
 		c.JSON(500, gin.H{"error": "Failed to delete products: " + err.Error()})
 		return
 	}
-	c.JSON(204, gin.H{"message": results})
+	c.JSON(202, gin.H{"message": results})
 }

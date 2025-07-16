@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./components/run/components/index.css";
 import Navigation from "./pages/products/App";
 import reportWebVitals from "./components/run/components/reportWebVitals";
+import UserInter from "./pages/user/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,6 +12,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Navigation />}></Route>
+        <Route path="/user/*" element={<UserInter />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

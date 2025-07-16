@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 
 import CrudNav from "../../Admin/modules/CrudNav.js"; */
 /* import CreateForm from '../../../components/bar-form/CreateForm.js'; */
+import { useNavigate } from "react-router-dom";
 import { RouteButton } from "../../../routing/components/button-route";
 import { TrigButton } from "../../../interact/components/trigger-button";
+import { clickedProduct } from "../../../interact/components/on-click";
 
-export const AutoFetchOnPage = ({ /* doNav, */ Button }) => {
+export const AutoFetchOnPage = ({ /* doNav, */ handle, navi, Button }) => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -30,9 +33,13 @@ export const AutoFetchOnPage = ({ /* doNav, */ Button }) => {
         <li
           key={product.id}
           className="relative bg-white border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 group flex flex-col items-center justify-center"
-          onClick={() => console.log("Thông tin sản phẩm:", product)}
+          onClick={() =>
+            handle
+              ? handle({ handle: navigate, navi: navi, product: product })
+              : console.log("Thông tin sản phẩm:", product)
+          }
         >
-          <span className="text-lg font-bold">{product.name}</span> -{" "}
+          <span className="text-lg font-bold">{product.name} </span> -{" "}
           <span className="text-gray-600 ml-2">${product.price}</span>
           {
             /* Overlay mờ dần quanh nút Action */
@@ -66,6 +73,7 @@ export const AutoFetchOnPage = ({ /* doNav, */ Button }) => {
           ) : ( */}
           <Button
             setBlur={setBlur}
+            navi={navi}
             product={product}
             products={products}
             setProducts={setProducts}

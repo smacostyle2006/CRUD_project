@@ -39,6 +39,7 @@ function Update() {
       </div>
       <AutoFetchOnPage
         /* doNav={true} */ Button={RouteButton}
+        navi={`/crud/product-update/`}
       ></AutoFetchOnPage>
     </>
   );

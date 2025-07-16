@@ -5,8 +5,8 @@ import { Link, Routes, Route } from "react-router-dom";
 import CrudNav from '../modules/CrudNav.js'; */
 import Create from "./Create";
 import Update from "./update/Update";
-import ProductId from "./update/[update-id]";
 import Delete from "./delete";
+import ProductVailidate from "./update/[update-id]";
 
 function CRUD() {
   let productId;
@@ -31,7 +31,10 @@ function CRUD() {
       <Routes>
         <Route path="create/*" element={<Create />} />
         <Route path="update/*" element={<Update />} />
-        <Route path="product-update/:productId/*" element={<ProductId />} />
+        <Route
+          path="product-update/:productId/*"
+          element={<ProductVailidate />}
+        />
         {/*<Route path="update" element={<Contact />} /> */}
         <Route path="delete" element={<Delete />} />
       </Routes>

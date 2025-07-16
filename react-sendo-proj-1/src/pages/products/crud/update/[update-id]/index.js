@@ -9,12 +9,9 @@ import CrudNav from '../../Admin/modules/CrudNav.js';
 import CreateForm from "../../../components/main/components/bar-form/CreateForm"; */
 import { FormFields } from "../../../../../components/front/components/form-edit";
 import { put } from "../../../../../components/data-flow/components/import-data/fetching";
+import { API_URL } from "../../../../../components/main/components/bar-form/CreateForm";
 
-const API_URL = window.location.hostname.includes("csb.app")
-  ? "https://wwrz99-8080.csb.app" // URL backend Codesandbox
-  : "http://localhost:8080"; // Local/Codespace
-
-function ProductId() {
+function ProductVailidate() {
   const { productId } = useParams();
   const location = useLocation();
   const product = location.state?.productState;
@@ -306,4 +303,4 @@ function ProductId() {
     </> */
 }
 
-export default ProductId;
+export default ProductVailidate;
