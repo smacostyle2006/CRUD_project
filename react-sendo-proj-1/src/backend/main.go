@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/yourusername/product-backend/sites/modules/webpage"
-	"github.com/yourusername/product-backend/components/fetching/utils"
+	"github.com/yourusername/product-backend/components/fetching"
 
 
 	"github.com/gin-contrib/cors"
@@ -158,7 +158,7 @@ func main() {
 			c.JSON(400, gin.H{"error": "Invalid ID"})
 			return
 		}
-		utils.HandleUpdateProductID(c, db, id)
+		crud.HandleUpdateProductID(c, db, id)
 
 
 	})
@@ -170,7 +170,7 @@ func main() {
 			c.JSON(400, gin.H{"error": "Invalid ID"})
 			return
 		}
-		utils.HandleDeleteProductID(c, db, id)
+		crud.HandleDeleteProductID(c, db, id)
 
 
 	})
