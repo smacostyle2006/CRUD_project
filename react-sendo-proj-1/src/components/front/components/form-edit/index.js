@@ -139,7 +139,7 @@ export const FormFields = ({
           value={formData.name}
           onChange={handleChange}
         />
-        {errors.name && <span className="error">{errors.name}</span>}
+        {errors ? <span className="error">{errors.name}</span> : ""}
       </div>
       <div className="form-group">
         <label>Description</label>
@@ -150,7 +150,7 @@ export const FormFields = ({
           value={formData.desc}
           onChange={handleChange}
         />
-        {errors.desc && <span className="error">{errors.desc}</span>}
+        {errors ? <span className="error">{errors.desc}</span> : ""}
       </div>
       <div className="form-group">
         <label>Price</label>
@@ -161,7 +161,7 @@ export const FormFields = ({
           value={formData.price}
           onChange={handleChange}
         />
-        {errors.price && <span className="error">{errors.price}</span>}
+        {errors ? <span className="error">{errors.price}</span> : ""}
       </div>
       <div className="form-group">
         <label>Image URL</label>
@@ -172,7 +172,7 @@ export const FormFields = ({
           value={formData.image}
           onChange={handleChange}
         />
-        {errors.image && <span className="error">{errors.image}</span>}
+        {errors ? <span className="error">{errors.image}</span> : ""}
       </div>
       <div className="UpdateButton">
         <button type="submit">Save</button>

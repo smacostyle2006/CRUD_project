@@ -1,5 +1,5 @@
 // App.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 /* import AdminNav from "../../Admin/modules/AdminNav.js";
 
 import CrudNav from "../../Admin/modules/CrudNav.js"; */
@@ -10,6 +10,7 @@ import { TrigButton } from "../../../interact/components/trigger-button";
 import { clickedProduct } from "../../../interact/components/on-click";
 
 export const AutoFetchOnPage = ({ /* doNav, */ handle, navi, Button }) => {
+  let ref = useRef(0);
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,7 +36,12 @@ export const AutoFetchOnPage = ({ /* doNav, */ handle, navi, Button }) => {
           className="relative bg-white border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 group flex flex-col items-center justify-center"
           onClick={() =>
             handle
-              ? handle({ handle: navigate, navi: navi, product: product })
+              ? handle({
+                  handle: navigate,
+                  navi: navi,
+                  product: product,
+                  ref: ref,
+                })
               : console.log("Thông tin sản phẩm:", product)
           }
         >

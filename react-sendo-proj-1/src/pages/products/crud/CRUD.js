@@ -14,16 +14,16 @@ function CRUD() {
     <div>
       {/* Navigation - like your HTML nav but with Links */}
       <nav className="Head">
-        <Link className="oke" to="/crud/create">
+        <Link className="oke" to="/admin/crud/create">
           Create
         </Link>
-        <Link className="oke" to="/crud/read">
+        <Link className="oke" to="/admin/crud/read">
           Read
         </Link>
-        <Link className="oke" to="/crud/update">
+        <Link className="oke" to="/admin/crud/update">
           Update
         </Link>
-        <Link className="oke" to="/crud/delete">
+        <Link className="oke" to="/admin/crud/delete">
           Delete
         </Link>
       </nav>

@@ -10,22 +10,16 @@ import List from "../../pages/products/list/List";
 import UserInter from "../user/App";
 import ProductDetailsInterface from "../../components/front/components/details-interface";
 
-function Navigation() {
+function Admin() {
   return (
     <>
-      <div>
-        <i></i>
-        <nav>
-          <Link to="/user">User</Link>
-          <Link to="/">Admin</Link>
-        </nav>
-      </div>
+      <div></div>
       <div className="App">
         {/* Navigation - like your HTML nav but with Links */}
         <nav className="Head">
-          <Link to="/list">List</Link>
-          <Link to="/crud">CRUD</Link>
-          <Link to="/analyst">Analyst</Link>
+          <Link to="/admin/list">List</Link>
+          <Link to="/admin/crud">CRUD</Link>
+          <Link to="/admin/analyst">Analyst</Link>
         </nav>
         {/* Routes - like your HTML files but as components */}
         <Routes>
@@ -41,4 +35,4 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+export default Admin;

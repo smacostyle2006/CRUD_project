@@ -16,13 +16,6 @@ function UserInter() {
   const navigate = useNavigate();
   return (
     <>
-      <div>
-        <i></i>
-        <nav>
-          <Link to="/user">User</Link>
-          <Link to="/">Admin</Link>
-        </nav>
-      </div>
       <AutoFetchOnPage
         handle={toProductDetails}
         navi={`/user/`}
@@ -30,9 +23,6 @@ function UserInter() {
       >
         {" "}
       </AutoFetchOnPage>
-      <Routes>
-        <Route path=":productId/*" element={<ProductDetailsInterface />} />
-      </Routes>
     </>
   );
 }
