@@ -9,6 +9,20 @@ import { RouteButton } from "../../../routing/components/button-route";
 import { TrigButton } from "../../../interact/components/trigger-button";
 import { clickedProduct } from "../../../interact/components/on-click";
 
+const EinItem = (product) => {
+  let ref = useRef(0);
+  return (
+    <li
+      key={product.id}
+      className="relative bg-white border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 group flex flex-col items-center justify-center"
+    >
+      duma m luon du ma m
+      <span className="text-lg font-bold">{product.name} </span> -{" "}
+      <span className="text-gray-600 ml-2">${product.price}</span>
+    </li>
+  );
+};
+
 const PerItem = (
   product,
   handle,
@@ -125,8 +139,6 @@ export const AutoFetchOnPage = ({ /* doNav, */ handle, navi, Button }) => {
     <ul className="grid grid-cols-5 gap-4">
       {products.map((product) => (
         <>
-          <PerItem></PerItem>
-          okeoke
           <li
             key={product.id}
             className="relative bg-white border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 group flex flex-col items-center justify-center"
@@ -205,6 +217,8 @@ export const AutoFetchOnPage = ({ /* doNav, */ handle, navi, Button }) => {
           </button>
           */}
           </li>
+          okeoke
+          <EinItem product={product}></EinItem>
         </>
       ))}
     </ul>
