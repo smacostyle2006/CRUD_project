@@ -13,11 +13,12 @@ type Product struct {
 	Description string  `json:"desc"`
 	Price       float64 `json:"price"`
 	ImageURL    string  `json:"image"`
+	Views		int		`json:"views"`
 }
 
 func HandleGetProducts(c *gin.Context, db *sql.DB) {
 	// Query to get all products
-	rows, err := db.Query("SELECT id, name, descrip, price, image FROM product order by id")
+	rows, err := db.Query("SELECT id, name, descrip, price, image, views FROM product order by id")
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Failed to fetch products: " + err.Error()})
 		return
@@ -27,7 +28,7 @@ func HandleGetProducts(c *gin.Context, db *sql.DB) {
 	var products []Product
 	for rows.Next() {
 		var p Product
-		if err := rows.Scan(&p.ID, &p.Name, &p.Description, &p.Price, &p.ImageURL); err != nil {
+		if err := rows.Scan(&p.ID, &p.Name, &p.Description, &p.Price, &p.ImageURL, &p.Views); err != nil {
 			c.JSON(500, gin.H{"error": "Failed to scan product: " + err.Error()})
 			return
 		}

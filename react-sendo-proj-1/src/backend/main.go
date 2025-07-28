@@ -28,6 +28,7 @@ type Product struct {
 	Description string  `json:"desc"`
 	Price       float64 `json:"price"`
 	ImageURL    string  `json:"image"`
+	Views		int		`json:"views"`
 }
 
 var db *sql.DB

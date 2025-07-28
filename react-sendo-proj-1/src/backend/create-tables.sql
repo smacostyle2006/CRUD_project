@@ -5,7 +5,8 @@ CREATE TABLE Product (
    name VARCHAR(128) NOT NULL,
    descrip VARCHAR(1000) NOT NULL,
    price FLOAT(53) NOT NULL,
-   image VARCHAR(1000) NOT NULL
+   image VARCHAR(1000) NOT NULL,
+   views int DEFAULT 0 NOT NULL
 );
 
 /* \c allproducts*/

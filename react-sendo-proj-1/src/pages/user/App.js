@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import "../../components/main/components/styles/App.css";
 /* import AdminNav from './components/modules/Admin/modules/AdminNav.js';
@@ -12,7 +12,7 @@ import { TrigButton } from "../../components/interact/components/trigger-button"
 import { toProductDetails } from "../../components/front/components/navigate-product-details";
 import ProductDetailsInterface from "../../components/front/components/details-interface";
 
-function UserInter() {
+function UserInter({ ref, productRef }) {
   const navigate = useNavigate();
   return (
     <>
@@ -20,6 +20,8 @@ function UserInter() {
         handle={toProductDetails}
         navi={`/user/`}
         Button={TrigButton}
+        ref={ref}
+        productRef={productRef}
       >
         {" "}
       </AutoFetchOnPage>
